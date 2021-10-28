@@ -67,7 +67,7 @@ router.get('/blogs/:id',async(req,res)=>{
 
 router.get('/blogs',async(req,res)=>{
 	const userid = req.query.userid;
-
+	console.log(userid);
 	try{
 		//let task = await Task.findById(_id);
 
