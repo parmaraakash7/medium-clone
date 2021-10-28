@@ -66,6 +66,34 @@ router.get('/following/:id',async(req,res)=>{
 });
 
 
+router.get('/follower/:id',async(req,res)=>{
+	const _id = req.params.id;
+
+	try{
+		//let task = await Task.findById(_id);
+
+		const blog = await Following.find({following : _id});
+		if(!blog){
+			return res.status(404).send();
+		}
+
+		res.send(blog);
+	}
+	catch(e){
+		res.status(500).send(e);
+	}
+
+	// Task.findById(_id).then((task)=>{
+	// 	if(!task){
+	// 		return res.status(404).send();
+	// 	}
+	// 	res.send(task);
+	// }).catch((e)=>{
+	// 	res.status(500).send(e);
+	// });
+});
+
+
 router.delete('/following',async(req,res)=>{
 	var _follower = req.query.follower;
 	var _following = req.query.following;
