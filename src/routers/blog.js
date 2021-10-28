@@ -66,12 +66,12 @@ router.get('/blogs/:id',async(req,res)=>{
 });
 
 router.get('/blogs',async(req,res)=>{
-	const _id = req.query.userid;
+	const userid = req.query.userid;
 
 	try{
 		//let task = await Task.findById(_id);
 
-		const blog = await Blog.find({user_id : _id});
+		const blog = await Blog.find({user_id : userid});
 		if(!blog){
 			return res.status(404).send();
 		}
